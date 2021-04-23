@@ -1,17 +1,24 @@
+function _each(array, iter) {
+  for (let i = 0; i < array.length; i++) {
+    iter(array[i]);
+  }
+  return array;
+}
+
 function _filter(array, predicate) {
   const newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    if (predicate(array[i])) {
-      newArray.push(array[i]);
+  _each(array, function (v) {
+    if (predicate(v)) {
+      newArray.push(v);
     }
-  }
+  });
   return newArray;
 }
 
 function _map(array, mapper) {
   const newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    newArray.push(mapper(array[i]));
-  }
+  _each(array, function (v) {
+    newArray.push(mapper(v));
+  });
   return newArray;
 }

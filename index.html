@@ -71,14 +71,12 @@
         return !(num % 2);
       }));
 
-      const fNames = _map(over30, function (user) {
+      console.log(_map(over30, function (user) {
         return user.name
-      });
-      const fAges = _map(under30, function (user) {
+      }));
+      console.log(_map(under30, function (user) {
         return user.age
-      });
-      console.log(fNames);
-      console.log(fAges);
+      }));
     </script>
   </body>
 </html>
