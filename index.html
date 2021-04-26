@@ -18,64 +18,8 @@
         { id: 8, name: "MP", age: 23 },
       ];
 
-      // 명령형 코드
-      // 1. 30세 이상인 user를 filter
-      const t1 = [];
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].age >= 30) {
-          t1.push(users[i]);
-        }
-      }
-      console.log(t1);
-
-      // 2. 30세 이상인 users의 names를 수집
-      const names = [];
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].age >= 30) {
-          names.push(users[i].name);
-        }
-      }
-      console.log(names);
-
-      // 3. 30세 미만인 user를 filter
-      const t2 = [];
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].age < 30) {
-          t2.push(users[i]);
-        }
-      }
-      console.log(t2);
-
-      // 4. 30세 미만인 users의 ages를 수집
-      const ages = [];
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].age < 30) {
-          ages.push(users[i].age);
-        }
-      }
-      console.log(ages);
-
-      // _filter, _map으로 refactoring
-      const over30 = _filter(users, function (user) {
-        return user.age >= 30;
-      })
-      const under30 = _filter(users, function (user) {
-        return user.age < 30;
-      })
-      console.log(over30);
-      console.log(under30);
-      console.log(_filter([1, 2, 3, 4], function (num) {
-        return num % 2;
-      }));
-      console.log(_filter([1, 2, 3, 4], function (num) {
-        return !(num % 2);
-      }));
-
-      console.log(_map(over30, function (user) {
-        return user.name
-      }));
-      console.log(_map(under30, function (user) {
-        return user.age
+      console.log(_map(document.querySelectorAll('*'), function (node) {
+        return node.nodeName
       }));
     </script>
   </body>
