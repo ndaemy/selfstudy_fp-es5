@@ -7,23 +7,48 @@
   <body>
     Check console!
     <script>
-      const add = _curry(function (a, b) {
-        return a + b;
-      });
+      const users = [
+        { id: 1, name: "ID", age: 36 },
+        { id: 2, name: "BJ", age: 32 },
+        { id: 3, name: "JM", age: 32 },
+        { id: 4, name: "PJ", age: 27 },
+        { id: 5, name: "HA", age: 25 },
+        { id: 6, name: "JE", age: 26 },
+        { id: 7, name: "JI", age: 31 },
+        { id: 8, name: "MP", age: 23 },
+      ];
 
-      const add10 = add(10);
-      console.log(add10(5));
-      console.log(add(5)(3));
-      console.log(add(5, 3));
+      const tests = [{ name: 'AA' }, { name: 'BB' }];
+      console.log(tests[1].name);
+      // console.log(tests[4].name);  // Error;
+      console.log(_get(tests[1], 'name'));
+      console.log(_get(tests[4], 'name'));
+      console.log(_get('name')(tests[1]));
+      console.log(_get('name')(tests[4]));
 
-      const sub = _curryr(function (a, b) {
-        return a - b;
-      });
+      const getName = _get('name');
+      console.log(getName(tests[0]));
+      console.log(getName(tests[1]));
+      console.log(getName(tests[4]));
 
-      const sub10 = sub(10);
-      console.log(sub10(5));
-      console.log(sub(5)(3));
-      console.log(sub(5, 3));
+      // 기존 코드
+      console.log(
+        _map(
+          _filter(users, function (user) {
+            return user.age >= 30;
+          }), function (user) {
+            return user.name
+          }
+        ))
+
+      // 신규 코드
+      console.log(
+        _map(
+          _filter(users, function (user) {
+            return user.age >= 30;
+          }), _get('name')
+        )
+      )
     </script>
   </body>
 </html>

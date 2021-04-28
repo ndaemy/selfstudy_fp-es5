@@ -42,3 +42,7 @@ function _curryr(fn) {
         };
   };
 }
+
+const _get = _curryr(function (obj, key) {
+  return obj ? obj[key] : undefined;
+});
